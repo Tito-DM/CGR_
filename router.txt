@@ -1,0 +1,16 @@
+ip routing
+
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+int GigabitEthernet1
+ip address 10.8.3.62 255.255.255.252
+no shutdown
+exit
+
+int GigabitEthernet2
+ip address 10.8.3.74 255.255.255.252
+no shutdown
+exit

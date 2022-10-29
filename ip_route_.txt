@@ -1,0 +1,369 @@
+
+
+
+//d1
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi1/2
+no switchport
+ip address 10.8.3.1 255.255.255.252
+no shutdown
+exit
+
+interface gi1/3
+no switchport
+ip address 10.8.3.5 255.255.255.252
+no shutdown
+exit
+
+interface range gi1/0-1
+no switchport
+no shutdown
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+no switchport
+ip address 10.3.10.9 255.255.255.252
+exit
+
+///////////////////
+
+//core 1
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi0/0
+no switchport
+ip address 10.8.3.2 255.255.255.252
+no shutdown
+exit
+
+interface gi0/1
+no switchport
+ip address 10.8.3.14 255.255.255.252
+exit
+
+interface gi0/2
+no switchport
+ip address 10.8.3.58 255.255.255.252
+no shutdown
+exit
+
+interface gi0/3
+no switchport
+ip address 10.8.3.26 255.255.255.252
+no shutdown
+exit
+
+interface gi1/0
+no switchport
+ip address 10.8.3.61 255.255.255.252
+no shutdown
+exit
+
+interface gi1/1
+no switchport
+ip address 10.8.3.65 255.255.255.252
+no shutdown
+exit
+
+///////////////////////////
+
+//TOR
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi0/1
+no switchport
+ip address 10.8.3.66 255.255.255.252
+no shutdown
+exit
+
+interface gi0/0
+no switchport
+ip address 10.8.3.69 255.255.255.252
+no shutdown
+exit
+///
+//ROUTER
+
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+int GigabitEthernet1
+ip address 10.8.3.62 255.255.255.252
+no shutdown
+exit
+
+int GigabitEthernet2
+ip address 10.8.3.74 255.255.255.252
+no shutdown
+exit
+/////
+
+//core 2
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi0/0
+no switchport
+ip address 10.8.3.22 255.255.255.252
+no shutdown
+exit
+
+interface gi0/1
+no switchport
+ip address 10.8.3.54 255.255.255.252
+no shutdown
+exit
+
+interface gi0/2
+no switchport
+ip address 10.8.3.6 255.255.255.252
+no shutdown
+exit
+
+interface gi0/3
+no switchport
+ip address 10.8.3.18 255.255.255.252
+no shutdown
+exit
+
+interface gi1/0
+no switchport
+ip address 10.8.3.70 255.255.255.252
+no shutdown
+exit
+
+interface gi1/1
+no switchport
+ip address 10.8.3.73 255.255.255.252
+no shutdown
+exit
+
+///////////////////////////
+
+
+//d2
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi1/2
+no switchport
+ip address 10.8.3.13 255.255.255.252
+no shutdown
+exit
+
+interface gi1/3
+no switchport
+ip address 10.8.3.17 255.255.255.252
+no shutdown
+exit
+
+interface range gi1/0-1
+no switchport
+no shutdown
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+no switchport
+ip address 10.3.10.10 255.255.255.252
+exit
+///////////////////////
+
+////d3
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi1/2
+no switchport
+ip address 10.8.3.21 255.255.255.252
+no shutdown
+exit
+
+interface gi1/3
+no switchport
+ip address 10.8.3.25 255.255.255.252
+no shutdown
+exit
+
+interface range gi0/0-1
+no switchport
+no shutdown
+channel-group 1 mode on
+exit
+
+interface port-channel 1
+no switchport
+ip address 10.3.10.37 255.255.255.252
+
+interface range gi0/2-3
+no switchport
+no shutdown
+channel-group 2 mode on
+exit
+
+interface port-channel 2
+no switchport
+ip address 10.3.10.34 255.255.255.252
+exit
+
+interface range gi1/0-1
+no switchport
+no shutdown
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+no switchport
+ip address 10.3.10.50 255.255.255.252
+exit
+//////
+
+
+////d4
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi1/2
+no switchport
+ip address 10.8.3.53 255.255.255.252
+no shutdown
+exit
+
+interface gi1/3
+no switchport
+ip address 10.8.3.57 255.255.255.252
+no shutdown
+exit
+
+interface range gi0/0-1
+no switchport
+no shutdown
+channel-group 1 mode on
+exit
+
+interface port-channel 1
+no switchport
+ip address 10.3.10.41 255.255.255.252
+
+interface range gi0/2-3
+no switchport
+no shutdown
+channel-group 2 mode on
+exit
+
+interface port-channel 2
+no switchport
+ip address 10.3.10.45 255.255.255.252
+exit
+
+interface range gi1/0-1
+no switchport
+no shutdown
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+no switchport
+ip address 10.3.10.49 255.255.255.252
+exit
+//////
+
+
+////acc3
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface range gi0/0-1
+no switchport
+no shutdown
+channel-group 1 mode on
+exit
+
+interface port-channel 1
+no switchport
+ip address 10.3.10.38 255.255.255.252
+
+interface range gi0/2-3
+no switchport
+no shutdown
+channel-group 2 mode on
+exit
+
+interface port-channel 2
+no switchport
+ip address 10.3.10.46 255.255.255.252
+exit
+//////
+
+////acc4
+
+ip routing
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface range gi0/0-1
+no switchport
+no shutdown
+channel-group 1 mode on
+exit
+
+interface port-channel 1
+no switchport
+ip address 10.3.10.42 255.255.255.252
+
+interface range gi0/2-3
+no switchport
+no shutdown
+channel-group 2 mode on
+exit
+
+interface port-channel 2
+no switchport
+ip address 10.3.10.33 255.255.255.252
+exit
+//////
+
+
+
+
+

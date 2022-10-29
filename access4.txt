@@ -1,0 +1,82 @@
+en
+conf t
+hostname access4
+vtp mode transparent
+vtp domain cgr
+
+
+interface gi1/0
+switchport mode access 
+switchport access vlan 5
+exit
+
+ip routing
+
+interface vlan 1
+shutdown
+ip address 10.8.1.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 2
+shutdown
+ip address 10.8.2.253 255.255.255.0
+no shutdown 
+exit
+
+interface vlan 3
+shutdown
+ip address 10.8.3.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 4
+shutdown
+ip address 10.8.4.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 5
+shutdown
+ip address 10.8.5.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 6
+shutdown
+ip address 10.8.3.253 255.255.255.0
+no shutdown
+exit
+
+ip dhcp excluded-address  10.8.5.253 
+ip dhcp pool Vlan5
+network 10.8.5.0 255.255.255.0
+default-router 10.8.5.253
+exit
+
+
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface range gi0/0-1
+no switchport
+no shutdown
+channel-group 1 mode on
+exit
+
+interface port-channel 1
+no switchport
+ip address 10.3.10.42 255.255.255.252
+
+interface range gi0/2-3
+no switchport
+no shutdown
+channel-group 2 mode on
+exit
+
+interface port-channel 2
+no switchport
+ip address 10.3.10.33 255.255.255.252
+exit

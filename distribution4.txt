@@ -1,0 +1,86 @@
+ip routing
+
+interface vlan 1
+shutdown
+ip address 10.8.1.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 2
+shutdown
+ip address 10.8.2.253 255.255.255.0
+no shutdown 
+exit
+
+interface vlan 3
+shutdown
+ip address 10.8.3.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 4
+shutdown
+ip address 10.8.4.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 5
+shutdown
+ip address 10.8.5.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 6
+shutdown
+ip address 10.8.3.253 255.255.255.0
+no shutdown
+exit
+
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi1/2
+no switchport
+ip address 10.8.3.53 255.255.255.252
+no shutdown
+exit
+
+interface gi1/3
+no switchport
+ip address 10.8.3.57 255.255.255.252
+no shutdown
+exit
+
+interface range gi0/0-1
+no switchport
+no shutdown
+channel-group 1 mode on
+exit
+
+interface port-channel 1
+no switchport
+ip address 10.3.10.41 255.255.255.252
+
+interface range gi0/2-3
+no switchport
+no shutdown
+channel-group 2 mode on
+exit
+
+interface port-channel 2
+no switchport
+ip address 10.3.10.45 255.255.255.252
+exit
+
+interface range gi1/0-1
+no switchport
+no shutdown
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+no switchport
+ip address 10.3.10.49 255.255.255.252
+exit

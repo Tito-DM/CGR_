@@ -1,0 +1,118 @@
+en
+conf t
+hostname Distribution1
+vtp mode transparent
+vtp domain cgr
+
+vlan 2
+exit
+
+vlan 3
+exit
+
+
+
+interface range gi0/0-1
+shutdown
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 1,2,3,4,5
+no shutdown
+channel-group 1 mode on
+exit
+
+interface range gi0/2-3
+shutdown
+switchport trunk encapsulation dot1q
+switchport mode trunk
+switchport nonegotiate
+switchport trunk allowed vlan 1,2,3,4,5
+no shutdown
+channel-group 2 mode on
+
+spanning-tree mode rapid-pvst
+spanning-tree vlan 2 root primary
+spanning-tree vlan 1 root primary
+spanning-tree vlan 3 root secondary
+
+
+//layer 3
+
+ip routing
+
+interface vlan 1
+shutdown
+ip address 10.8.1.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 2
+shutdown
+ip address 10.8.2.253 255.255.255.0
+no shutdown 
+exit
+
+interface vlan 3
+shutdown
+ip address 10.8.3.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 4
+shutdown
+ip address 10.8.4.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 5
+shutdown
+ip address 10.8.5.253 255.255.255.0
+no shutdown
+exit
+
+interface vlan 6
+shutdown
+ip address 10.8.3.253 255.255.255.0
+no shutdown
+exit
+
+ip dhcp excluded-address  10.8.1.253 10.8.1.254
+ip dhcp pool Vlan1
+network 10.8.1.0 255.255.255.0
+default-router 10.8.1.253
+exit
+
+ip dhcp excluded-address  10.8.2.253 10.8.2.254
+ip dhcp pool Vlan2
+network 10.8.2.0 255.255.255.0
+default-router 10.8.2.253
+exit
+
+router eigrp 20 
+network 10.8.0.0 0.0.255.255
+no auto-summary
+exit
+
+interface gi1/2
+no switchport
+ip address 10.8.3.1 255.255.255.252
+no shutdown
+exit
+
+interface gi1/3
+no switchport
+ip address 10.8.3.5 255.255.255.252
+no shutdown
+exit
+
+interface range gi1/0-1
+no switchport
+no shutdown
+channel-group 3 mode on
+exit
+
+interface port-channel 3
+no switchport
+ip address 10.3.10.9 255.255.255.252
+exit
