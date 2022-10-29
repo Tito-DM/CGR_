@@ -2,7 +2,16 @@ en
 conf t
 hostname access3
 
-
+vlan 2
+exit
+vlan 3
+exit
+vlan 4
+exit
+vlan 5
+exit
+vlan 6
+exit
 
 interface gi1/0
 switchport mode access 

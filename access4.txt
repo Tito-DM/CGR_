@@ -4,6 +4,16 @@ hostname access4
 vtp mode transparent
 vtp domain cgr
 
+vlan 2
+exit
+vlan 3
+exit
+vlan 4
+exit
+vlan 5
+exit
+vlan 6
+exit
 
 interface gi1/0
 switchport mode access 
