@@ -1,3 +1,7 @@
+en
+conf t
+hostname distribution4
+
 ip routing
 
 interface vlan 1
@@ -32,10 +36,11 @@ exit
 
 interface vlan 6
 shutdown
-ip address 10.8.3.253 255.255.255.0
+ip address 10.8.6.253 255.255.255.0
 no shutdown
 exit
 
+ip routing
 router eigrp 20 
 network 10.8.0.0 0.0.255.255
 no auto-summary
@@ -43,13 +48,13 @@ exit
 
 interface gi1/2
 no switchport
-ip address 10.8.3.53 255.255.255.252
+ip address 10.8.10.53 255.255.255.252
 no shutdown
 exit
 
 interface gi1/3
 no switchport
-ip address 10.8.3.57 255.255.255.252
+ip address 10.8.10.57 255.255.255.252
 no shutdown
 exit
 
@@ -61,7 +66,7 @@ exit
 
 interface port-channel 1
 no switchport
-ip address 10.3.10.41 255.255.255.252
+ip address 10.8.10.41 255.255.255.252
 
 interface range gi0/2-3
 no switchport
@@ -71,7 +76,7 @@ exit
 
 interface port-channel 2
 no switchport
-ip address 10.3.10.45 255.255.255.252
+ip address 10.8.10.45 255.255.255.252
 exit
 
 interface range gi1/0-1
@@ -82,5 +87,5 @@ exit
 
 interface port-channel 3
 no switchport
-ip address 10.3.10.49 255.255.255.252
+ip address 10.8.10.50 255.255.255.252
 exit

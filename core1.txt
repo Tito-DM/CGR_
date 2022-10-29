@@ -1,14 +1,7 @@
 en
 conf t
-hostname access4
-vtp mode transparent
-vtp domain cgr
+hostname core1
 
-
-interface gi1/0
-switchport mode access 
-switchport access vlan 5
-exit
 
 ip routing
 
@@ -42,42 +35,50 @@ ip address 10.8.5.253 255.255.255.0
 no shutdown
 exit
 
+
+
 interface vlan 6
 shutdown
 ip address 10.8.6.253 255.255.255.0
 no shutdown
 exit
 
-ip dhcp excluded-address  10.8.5.253 
-ip dhcp pool Vlan5
-network 10.8.5.0 255.255.255.0
-default-router 10.8.5.253
-exit
-
-
-ip routing
 router eigrp 20 
 network 10.8.0.0 0.0.255.255
 no auto-summary
 exit
 
-interface range gi0/0-1
+interface gi0/0
 no switchport
+ip address 10.8.10.2 255.255.255.252
 no shutdown
-channel-group 1 mode on
 exit
 
-interface port-channel 1
+interface gi0/1
 no switchport
-ip address 10.8.10.42 255.255.255.252
-
-interface range gi0/2-3
-no switchport
-no shutdown
-channel-group 2 mode on
+ip address 10.8.10.14 255.255.255.252
 exit
 
-interface port-channel 2
+interface gi0/2
 no switchport
-ip address 10.8.10.33 255.255.255.252
+ip address 10.8.10.58 255.255.255.252
+no shutdown
+exit
+
+interface gi0/3
+no switchport
+ip address 10.8.10.26 255.255.255.252
+no shutdown
+exit
+
+interface gi1/0
+no switchport
+ip address 10.8.10.61 255.255.255.252
+no shutdown
+exit
+
+interface gi1/1
+no switchport
+ip address 10.8.10.65 255.255.255.252
+no shutdown
 exit

@@ -74,7 +74,7 @@ exit
 
 interface vlan 6
 shutdown
-ip address 10.8.3.253 255.255.255.0
+ip address 10.8.6.253 255.255.255.0
 no shutdown
 exit
 
@@ -90,6 +90,7 @@ network 10.8.2.0 255.255.255.0
 default-router 10.8.2.253
 exit
 
+ip routing
 router eigrp 20 
 network 10.8.0.0 0.0.255.255
 no auto-summary
@@ -97,13 +98,13 @@ exit
 
 interface gi1/2
 no switchport
-ip address 10.8.3.13 255.255.255.252
+ip address 10.8.10.13 255.255.255.252
 no shutdown
 exit
 
 interface gi1/3
 no switchport
-ip address 10.8.3.17 255.255.255.252
+ip address 10.8.10.17 255.255.255.252
 no shutdown
 exit
 
@@ -115,7 +116,5 @@ exit
 
 interface port-channel 3
 no switchport
-ip address 10.3.10.10 255.255.255.252
+ip address 10.8.10.10 255.255.255.252
 exit
-
-
